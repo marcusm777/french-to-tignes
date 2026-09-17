@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<title>French to Tignes</title>
+<style>
+:root{--bg:#f4f5f7;--card:#fff;--ink:#101114;--muted:#6c7078;--line:#e4e6ea;--green:#218739;--amber:#b7791f;--red:#b42318;--blue:#1769e0}
+*{box-sizing:border-box} body{margin:0;background:var(--bg);font-family:-apple-system,BlinkMacSystemFont,"SF Pro Text",Arial,sans-serif;color:var(--ink)}
+.app{max-width:430px;margin:auto;min-height:100vh;padding:calc(12px + env(safe-area-inset-top)) 16px calc(84px + env(safe-area-inset-bottom))}
+h1{font-size:25px;margin:4px 0}.muted{color:var(--muted)}.tiny{font-size:12px}.card{background:var(--card);border:1px solid var(--line);border-radius:20px;padding:16px;margin:13px 0}
+.pace{background:var(--green);color:#fff;border-radius:18px;padding:16px}.pace.amber{background:var(--amber)}.pace.red{background:var(--red)}
+.row{display:flex;justify-content:space-between;gap:12px;align-items:center}.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}.stat{text-align:center;background:#fff;border:1px solid var(--line);border-radius:15px;padding:12px 6px}.big{font-size:20px;font-weight:750}
+button{font:inherit;border:0;cursor:pointer}.primary{width:100%;padding:15px;border-radius:15px;background:#111;color:#fff;font-weight:700;font-size:16px}.secondary{padding:12px 14px;border-radius:13px;background:#eceef2;font-weight:650}.danger{background:#d92d20;color:#fff}
+nav{position:fixed;bottom:0;left:50%;transform:translateX(-50%);width:min(430px,100%);display:grid;grid-template-columns:repeat(4,1fr);background:rgba(255,255,255,.96);border-top:1px solid var(--line);padding-bottom:env(safe-area-inset-bottom);z-index:10}nav button{background:none;padding:14px 3px;color:var(--muted)}nav button.active{color:#111;font-weight:700}
+.view{display:none}.view.active{display:block}.lesson{padding:14px 0;border-bottom:1px solid var(--line)}.pill{display:inline-block;padding:5px 9px;border-radius:999px;background:#eef0f3;font-size:12px}
+.call{background:#111;color:white;border-radius:24px;padding:22px 18px;min-height:480px;display:flex;flex-direction:column}.avatar{width:78px;height:78px;border-radius:50%;display:grid;place-items:center;background:#34363b;font-size:30px;margin:10px auto}.transcript{flex:1;background:#1d1f23;border-radius:18px;padding:16px;margin:16px 0;overflow:auto;max-height:260px}.bubble{margin:8px 0;line-height:1.4}.tutor{color:#fff}.you{color:#b9d6ff}.controls{display:flex;justify-content:center;gap:12px;flex-wrap:wrap}.round{width:58px;height:58px;border-radius:50%;background:#2c2f34;color:#fff;font-size:21px}.listen{animation:pulse 1.2s infinite}@keyframes pulse{50%{box-shadow:0 0 0 8px rgba(255,255,255,.08)}}.note{font-size:13px;line-height:1.45}.bar{height:9px;background:#e6e8ec;border-radius:99px;overflow:hidden}.fill{height:100%;background:var(--green);width:0}.hidden{display:none!important}
+</style>
+</head>
+<body>
+<main class="app">
+<section id="home" class="view active">
+ <div class="tiny muted" id="dateLabel"></div><h1>Bonjour Marcus</h1><div class="muted">French to Tignes · 27 February 2027</div>
+ <div id="paceBox" class="pace card"><div class="row"><div><div class="tiny">C1-TIGNES PACE</div><div class="big" id="paceText">GREEN · ON PACE</div></div><div style="text-align:right"><div class="tiny">TO GREEN</div><div class="big" id="extra">0 min</div></div></div><div class="tiny" style="margin-top:9px" id="paceReason">Start the course to establish your real learning trajectory.</div></div>
+ <div class="stats"><div class="stat"><div class="big" id="hours">0.0h</div><div class="tiny muted">completed</div></div><div class="stat"><div class="big" id="sessions">0</div><div class="tiny muted">sessions</div></div><div class="stat"><div class="big" id="accuracy">—</div><div class="tiny muted">recognition</div></div></div>
+ <div class="card"><div class="tiny muted">TODAY</div><h2 style="margin:5px 0 8px">Arriving in France</h2><div class="muted">A mixed English/French conversation with Claire. She'll listen, correct you, make you retry and bring weak phrases back later.</div><button class="primary" id="startCall" style="margin-top:16px">Start 40-minute lesson</button><p class="note muted">Free prototype: uses your browser's speech recognition and speech synthesis. Recognition quality depends on Safari/iOS and is not phoneme-level pronunciation scoring.</p></div>
+</section>
+
+<section id="lessons" class="view"><h1>Lessons</h1><div class="card"><div class="lesson"><span class="pill">Day 1 · AM</span><h3>Arriving in France</h3><div class="muted">Greetings · introductions · understanding · asking someone to repeat</div></div><div class="lesson"><span class="pill">Day 1 · PM</span><h3>Follow-on conversation</h3><div class="muted">25 min expansion · 15 min retrieval/test</div></div><div class="lesson"><span class="pill">Coming up</span><h3>Roads, fuel & péages</h3><div class="muted">Natural travel French built around the drive to Tignes.</div></div></div></section>
+
+<section id="progress" class="view"><h1>Progress</h1><div class="card"><div class="row"><strong>C1-Tignes trajectory</strong><span id="progressPct">0%</span></div><div class="bar" style="margin-top:10px"><div id="progressFill" class="fill"></div></div><p class="muted note">This prototype stores completed time and recognition results locally on this iPhone. The eventual pace engine will also weight retention, spontaneous speaking, listening and repeated weaknesses.</p></div><div class="stats"><div class="stat"><div class="big" id="pHours">0.0</div><div class="tiny muted">hours</div></div><div class="stat"><div class="big" id="pCorrect">0</div><div class="tiny muted">heard correctly</div></div><div class="stat"><div class="big" id="pAttempts">0</div><div class="tiny muted">attempts</div></div></div></section>
+
+<section id="practice" class="view"><h1>Practice</h1><div class="card"><h3>Quick conversation</h3><p class="muted">Use the same voice tutor outside a scheduled lesson. Practice does not automatically count as a full lesson.</p><button class="primary" id="practiceCall">Call Claire</button></div></section>
+
+<section id="call" class="view">
+ <div class="call"><div class="tiny" style="text-align:center;color:#aaa">LIVE LESSON · CLAIRE</div><div class="avatar">C</div><div style="text-align:center"><strong id="callStatus">Starting…</strong><div class="tiny" style="color:#aaa" id="timer">00:00</div></div>
+ <div class="transcript" id="transcript" aria-live="polite"></div>
+ <div class="controls"><button class="secondary" id="hint">Hint</button><button class="round" id="mic" aria-label="Speak">🎙</button><button class="secondary" id="again">Hear again</button><button class="round danger" id="end" aria-label="End lesson">×</button></div>
+ </div>
+</section>
+</main>
+<nav id="nav"><button class="active" data-view="home">Home</button><button data-view="lessons">Lessons</button><button data-view="progress">Progress</button><button data-view="practice">Practice</button></nav>
+<script>
+const $=s=>document.querySelector(s), $$=s=>document.querySelectorAll(s);
+const state=JSON.parse(localStorage.getItem('tignesState')||'{"seconds":0,"sessions":0,"correct":0,"attempts":0}');
+let recognition=null, timerId=null, startedAt=0, current=0, lastTutor='', practice=false;
+const lesson=[
+ {say:"Bonjour Marcus. I'm Claire. We're going to keep this relaxed — imagine we're actually on the phone. First one is easy. Bonjour ! Comment ça va ?", expect:["ça va","ca va","très bien","tres bien","bien"], hint:"Try: Ça va très bien, merci.", correction:"Good. A natural answer is: Ça va très bien, merci. Say it once for me."},
+ {say:"Très bien. Maintenant en français: tell me that you speak a little French.", expect:["je parle un peu français","je parle un peu francais"], hint:"Je parle… un peu… français.", correction:"Nearly. Listen: Je parle un peu français. Not 'un petit français'. Try the whole phrase."},
+ {say:"Parfait. Now I'm going to speak as if we're in France. Vous comprenez ce que je dis ?", expect:["oui je comprends","je comprends","un peu"], hint:"You can say: Oui, je comprends un peu.", correction:"Let's make that natural: Oui, je comprends un peu. Your turn."},
+ {say:"Okay, harder. I speak too quickly and you need me to repeat. What do you say in French ?", expect:["vous pouvez répéter","pouvez-vous répéter","répétez"], hint:"Vous pouvez… répéter… s'il vous plaît ?", correction:"Use: Vous pouvez répéter, s'il vous plaît ? Listen to the rhythm, then copy me."},
+ {say:"Très bien. Surprise test. Je parle beaucoup trop vite maintenant. Qu'est-ce que tu me demandes ?", expect:["plus lentement","parler plus lentement","pouvez parler plus lentement"], hint:"Ask me to speak more slowly.", correction:"Try: Vous pouvez parler plus lentement, s'il vous plaît ? Now you."},
+ {say:"Excellent. Last one for this demo. Présente-toi: your name, where you're from, and that you speak a little French.", expect:["marcus","angleterre","français"], hint:"Je m'appelle Marcus. Je viens d'Angleterre. Je parle un peu français.", correction:"Listen: Je m'appelle Marcus. Je viens d'Angleterre. Je parle un peu français. Now say all three naturally."}
+];
+function save(){localStorage.setItem('tignesState',JSON.stringify(state)); render();}
+function render(){const h=(state.seconds/3600).toFixed(1); $('#hours').textContent=h+'h';$('#pHours').textContent=h;$('#sessions').textContent=state.sessions;$('#pCorrect').textContent=state.correct;$('#pAttempts').textContent=state.attempts;const a=state.attempts?Math.round(state.correct/state.attempts*100):null;$('#accuracy').textContent=a===null?'—':a+'%';let pct=Math.min(100,state.seconds/(155*3600)*100);$('#progressPct').textContent=pct.toFixed(1)+'%';$('#progressFill').style.width=pct+'%';}
+function show(id){$$('.view').forEach(v=>v.classList.remove('active'));$('#'+id).classList.add('active');$('#nav').classList.toggle('hidden',id==='call');$$('nav button').forEach(b=>b.classList.toggle('active',b.dataset.view===id));}
+$$('nav button').forEach(b=>b.onclick=()=>show(b.dataset.view));
+$('#dateLabel').textContent=new Intl.DateTimeFormat('en-GB',{weekday:'long',day:'numeric',month:'long'}).format(new Date());
+function speak(text, thenListen=false){lastTutor=text; add('Claire',text,'tutor'); speechSynthesis.cancel();const u=new SpeechSynthesisUtterance(text);u.lang='fr-FR';u.rate=.92;u.onend=()=>{if(thenListen) startListening();};speechSynthesis.speak(u);}
+function add(who,text,cls){const d=document.createElement('div');d.className='bubble '+cls;d.innerHTML='<strong>'+who+':</strong> '+text;$('#transcript').appendChild(d);$('#transcript').scrollTop=$('#transcript').scrollHeight;}
+function begin(isPractice=false){practice=isPractice;current=0;$('#transcript').innerHTML='';show('call');startedAt=Date.now();timerId=setInterval(()=>{let s=Math.floor((Date.now()-startedAt)/1000);$('#timer').textContent=String(Math.floor(s/60)).padStart(2,'0')+':'+String(s%60).padStart(2,'0')},1000);setupRecognition();speak(lesson[0].say,true);}
+function setupRecognition(){const SR=window.SpeechRecognition||window.webkitSpeechRecognition;if(!SR){$('#callStatus').textContent='Speech recognition unavailable';add('System','This Safari version does not expose speech recognition here. You can still hear the tutor, but microphone checking needs a supported iOS/Safari environment.','you');return} recognition=new SR();recognition.lang='fr-FR';recognition.interimResults=false;recognition.continuous=false;recognition.onstart=()=>{$('#callStatus').textContent='Listening…';$('#mic').classList.add('listen')};recognition.onend=()=>{$('#mic').classList.remove('listen');if($('#call').classList.contains('active'))$('#callStatus').textContent='Tap mic to answer'};recognition.onerror=e=>add('System','I didn’t catch that clearly. Tap the microphone and try again.','you');recognition.onresult=e=>evaluate(e.results[0][0].transcript);}
+function startListening(){try{recognition&&recognition.start()}catch(e){}}
+function evaluate(text){add('You',text,'you');state.attempts++;const normalized=text.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'');const item=lesson[current];const hits=item.expect.filter(x=>normalized.includes(x.normalize('NFD').replace(/[\u0300-\u036f]/g,''))).length;let ok=current===5?hits>=2:hits>=1;if(ok){state.correct++;save();const replies=['Oui, exactement. Très bien.','Parfait — that sounded natural.','Bien joué. On continue.'];speak(replies[current%replies.length]+' '+(current<lesson.length-1?lesson[++current].say:'That’s the end of this short V1 demo. Très bien aujourd’hui, Marcus.'),current<lesson.length);}else{save();speak(item.correction,true)}}
+$('#startCall').onclick=()=>begin(false);$('#practiceCall').onclick=()=>begin(true);$('#mic').onclick=startListening;$('#again').onclick=()=>speak(lastTutor,true);$('#hint').onclick=()=>{add('Claire','Hint: '+lesson[current].hint,'tutor');speak(lesson[current].hint,true)};
+$('#end').onclick=()=>{speechSynthesis.cancel();if(recognition)try{recognition.abort()}catch(e){};clearInterval(timerId);let elapsed=Math.max(0,Math.floor((Date.now()-startedAt)/1000));if(!practice){state.seconds+=elapsed;state.sessions++;save()}show('home')};
+render();
+</script>
+</body></html>
